@@ -80,7 +80,35 @@ $(document).ready(function() {
         }
     });
 
+    $('.addProduct').on('click', '.detainProd .removeBtn .rmBtnEdit', function() {
+        var count = $('.addProduct').parentsUntil().find('.detainProd').length;
+        if (count > 1) {
+            let id = $(this).attr('name');
+            let number = $(this).attr('id');
+            let validSP = $("select[name*='idSP" + number + "']").val();
+            let valsl = $("input[name*='sl" + number + "']").val();
+            let valgianhap = $("input[name*='gianhap" + number + "']").val();
+            let valdvt = $("input[name*='dvt" + number + "']").val();
+            var ischeck = confirm('Bạn muốn xóa? Thao tác sẽ không được thu hồi');
+            if (ischeck == true) {
+                var content = $(this).parent().parent();
+                content.remove();
+                var tongtien = SetvalueEdit(valgianhap * valsl);
+                $.post('/api/removeDetailProduct', { id: id, idSP: validSP, sl: valsl, gianhap: valgianhap, dvt: valdvt, tongtien: tongtien }, function(res) {
+                    // res.code == 200 ? location.reload() : alert('Không thể xóa');
+                })
+            }
+        }
+
+    });
 });
+// load tongtien using edit
+function SetvalueEdit(value) {
+    var total = $('#totalTien').val();
+    var tongtien = total - value
+    $('#totalTien').val(total - tongtien);
+    return tongtien;
+}
 
 // load tongtien
 function setValue() {

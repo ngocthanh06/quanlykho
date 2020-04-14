@@ -44,7 +44,7 @@
                             </div>
                         </div>   
                         <div class=" col-sm-1 form-group removeBtn">
-                            <input type="button" class="btn btn-danger RmBtn" id="rmBtn" value="Xóa">
+                            <input type="button" class="btn btn-danger rmBtnEdit" id="<?php echo $key!=0 ? $key : '' ?>" name="{{$id}}"" value="Xóa">
                         </div>
                     </div>
                   <?php } }?>
