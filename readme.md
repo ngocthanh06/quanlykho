@@ -7,35 +7,30 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## Tool quản lý kho
+## Tool quản lý nhân sự
 
-Tool quản lý kho được viết bằng Laravel framework. Gồm các chức năng chính như:
+Tool quản lý nhân sự được viết bằng Laravel framework. Gồm các chức năng chính như:
 
-## Cài đặt
+- Phân quyền: Nhân viên và quản lý nhân sự.
 
+- Nhân viên: 
++ Login.
++ Xin nghỉ phép.
++ Kiểm tra số phép đã được duyệt.
++ Kiểm tra số phép còn lại trong năm.
++ Kiểm tra số ngày công đã làm trong tháng.
++ Kiểm tra tiền lương làm trong tháng.
 
-Use the package manager [composer](https://getcomposer.org/) to install.
+- Quản lý nhân sự:
++ CRUD nhân viên.
++ Thêm loại hợp đồng của nhân viên.
++ CRUD hợp đồng cho nhân viên.
++ Chấm công theo ngày.
++ Tính lương theo tháng.
++ Kiểm tra đơn xin phép của nhân viên chấp nhận hoặc không.
++ Kiểm tra công nhân viên theo tháng.
++ Hệ thống sẽ tính lương dựa theo setup của lương theo tháng của bảng chấm công.
++ Export ra excel bảng tính lương của nhân viên.
 
-
-```
-composer install
-php artisan key:generate
-php artisan migrate:refresh --seed
-```
-## Usage
-
-You must install user information with the highest permissions. Here I use tinker
-
-```
-email: admin@gmail.com
-password: 123123
-```
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## Author
-[Ngocthanh06](https://github.com/ngocthanh06)
+-> Ghi chú: nhân viên phải được tạo hợp đồng mới đăng nhập được tài khoản của mình
 
