@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $prod['prod'] = product::with(['category', 'supplier'])->paginate(8);
+        $prod['prod'] = product::with(['category', 'supplier'])->paginate(10);
         return view('products.show', $prod);
     }
 

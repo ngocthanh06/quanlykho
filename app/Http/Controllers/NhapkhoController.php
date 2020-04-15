@@ -185,6 +185,15 @@ class NhapKhoController extends Controller
         chitietnhapkho::where([['id_nhapkho', $request['id']],[ 'id_SP',$request['idSP']],['gianhap',$request['gianhap']],['sl',$request['sl']],['dvt',$request['dvt']]])->delete();
         return response()->json(['code' => 200]);
     }
+
+    public function listSpNhapKho(){
+        $list['list'] = chitietnhapkho::with(['product' => function($q){
+            $q->with('supplier');
+        }])->get();
+        return view('Nhapkho.list', $list);
+    }
+
+
     public function destroy(NhapKho $nhapKho)
     {
         //

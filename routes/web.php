@@ -61,6 +61,8 @@ Route::get('/addNhap', 'NhapKhoController@create');
 Route::post('/addNhap', 'NhapKhoController@store');
 Route::get('editNhap/{id}','NhapKhoController@edit');
 Route::post('editNhap/{id}','NhapKhoController@update');
+Route::get('listSpNhapKho','NhapKhoController@listSpNhapKho');
+
 
 
 });

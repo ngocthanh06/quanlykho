@@ -17,7 +17,7 @@ class Detailnhapkho extends Migration
             $table->integer('id_nhapkho');
             $table->integer('id_SP')->nullable();
             $table->text('dvt')->nullable();
-            $table->integer('soluong')->nullable();
+            $table->integer('sl')->nullable();
             $table->double('gianhap')->nullable();
             $table->timestamps();
         });

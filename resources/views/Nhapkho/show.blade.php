@@ -4,15 +4,9 @@
 <div class="ibox float-e-margins">
    <div class="ibox-title">
       <h5 style="margin-top:10px">Đơn nhập hàng </h5>
-      <a href="{{asset('/addNhap')}}" style="margin-left: 10px;"class="btn btn-success">tạo mới đơn hàng</a>
+      <a href="{{asset('/addNhap')}}" style="margin-left: 10px;"class="btn btn-success">Tạo mới đơn hàng</a>
+      <a href="{{asset('/listSpNhapKho')}}" style="margin-left: 10px;"class="btn btn-primary">Danh sách sản phẩm nhập kho</a>
    </div>
-   {{-- 
-   <div class="ibox-content">
-      <div style="text-align:center">
-         {{$Nhap->links()}}
-      </div>
-   </div>
-   --}}
    <div class="wrapper wrapper-content animated fadeInRight">
       <div class="row">
          <div class="col-lg-12">
@@ -32,9 +26,6 @@
                         <li><a href="#">Config option 2</a>
                         </li>
                      </ul>
-                     <a class="close-link">
-                     <i class="fa fa-times"></i>
-                     </a>
                   </div>
                </div>
                <div class="ibox-content">
@@ -105,7 +96,7 @@
                                                          <?php foreach($nk->chitietnhapkho as $key => $value){ ?>
                                                          <?php if($value->product){ ?>
                                                          <tr>
-                                                            <td>{{$key}}</td>
+                                                            <td>{{$key + 1}}</td>
                                                             <td>{{$value->product->name}}</td>
                                                             <td>{{$value->product->category->name}}</td>
                                                             <td>{{$value->product->supplier->TenNCC}}</td>

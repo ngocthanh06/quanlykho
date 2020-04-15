@@ -1,4 +1,4 @@
-<?php $open = 'account' ?>
+<?php $open = 'Nhapkho' ?>
 @extends('Admin.layout')
 @section('content')
     <div class="ibox-title">
