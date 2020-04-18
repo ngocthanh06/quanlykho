@@ -115,4 +115,29 @@ class ProductController extends Controller
         $prod = product::all();
         return $prod;
     }
+
+    public function loadProduct($id){
+        $product = product::find($id);
+        if($product->soluong <= 0){
+            return response()->json(['mess' => 401]);
+        }
+        return $product;
+    }
+
+    public function checkLoadProd($id){
+        $product = product::find($id);
+        if($product->soluong < 0){
+            return response()->json(['mess' => 401]);
+        }
+        return $product;
+    }
+    public function checkProduct($id){
+        if($id == 0){
+            return 0;
+        }
+        else{
+            $product = product::find($id);
+            return $product->soluong;
+        }
+    }
 }

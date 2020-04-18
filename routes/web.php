@@ -64,6 +64,16 @@ Route::post('editNhap/{id}','NhapKhoController@update');
 Route::get('listSpNhapKho','NhapKhoController@listSpNhapKho');
 
 
+/**
+ * Todo xuatkho
+ */
+Route::get('/xuatkho', 'XuatKhoController@index');
+Route::get('/addxuat', 'XuatKhoController@create');
+Route::post('/addxuat', 'XuatKhoController@store');
+Route::get('editxuat/{id}','XuatKhoController@edit');
+Route::post('editxuat/{id}','XuatKhoController@update');
+Route::get('listSpxuatKho','XuatKhoController@listSpNhapKho');
+
 
 });
 Route::get('/home', 'HomeController@index')->name('home');

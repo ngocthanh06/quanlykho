@@ -13,6 +13,7 @@
             {{ csrf_field() }}
                 <div class="row addProduct"   > 
                     <div class="detainProd row" style='padding: 0 15px'>
+                        <input type="text" class='0' style="display: none" >
                         <div class="form-group col-sm-3">
                             <label class="col-sm-4 control-label">Tên sản phẩm</label>
                             <div class="col-sm-8">

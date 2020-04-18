@@ -70,9 +70,11 @@
 
                     <li class="<?php echo isset($open) && $open == 'Nhapkho' ?'active':'' ?>">
                         <a href="{{asset('/Nhapkho')}}"><i class="fa fa-diamond"></i> <span class="nav-label">Nhập Kho</span></a>
-                        
                     </li>
-              
+                    
+                    <li class="<?php echo isset($open) && $open == 'Xuatkho' ?'active':'' ?>">
+                        <a href="{{asset('/xuatkho')}}"><i class="fa fa-diamond"></i> <span class="nav-label">Xuất Kho</span></a>
+                    </li>
                 {{-- @endif --}}
             </ul>
         </div>

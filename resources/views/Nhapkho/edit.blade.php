@@ -11,10 +11,11 @@
     <div class="ibox-content">
         <form method="post" class="form-horizontal">
             {{ csrf_field() }}
-                <div class="row addProduct"   > 
+                <div class="row addProduct" > 
                   <?php foreach($nhapkho as $nk){ ?>
                     <?php foreach($nk->chitietnhapkho as $key=>$n){ ?> 
                     <div class="detainProd row" style='padding: 0 15px'>
+                        <input type="text" class={{$key}} style="display: none" >
                         <div class="form-group col-sm-3">
                             <label class="col-sm-4 control-label">Tên sản phẩm</label>
                             <div class="col-sm-8">
@@ -44,7 +45,7 @@
                             </div>
                         </div>   
                         <div class=" col-sm-1 form-group removeBtn">
-                            <input type="button" class="btn btn-danger rmBtnEdit" id="<?php echo $key!=0 ? $key : '' ?>" name="{{$id}}"" value="Xóa">
+                            <input type="button" class="btn btn-danger rmBtnEdit" id="<?php echo $key!=0 ? $key : '' ?>" name="{{$id}}" value="Xóa">
                         </div>
                     </div>
                   <?php } }?>

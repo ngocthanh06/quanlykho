@@ -8,6 +8,9 @@ class Nhapkho extends Model
 {
     protected $table = 'nhapkho';
     protected $primaryKey = 'id';
+    protected $guarded = ['id'];
+
+   
 
     public function user(){
         return $this->belongsTo('App\User', 'user_id', 'id');
