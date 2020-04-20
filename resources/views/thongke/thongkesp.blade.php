@@ -28,7 +28,7 @@
          <div class="col-lg-12">
             <div class="ibox float-e-margins">
                <div class="ibox-title">
-                  <h5>Bảng chi tiết sản phẩm</h5>
+                  <h5>Bảng chi tiết thống kê sản phẩm</h5>
                   <div class="ibox-tools">
                      <a class="collapse-link">
                      <i class="fa fa-chevron-up"></i>
