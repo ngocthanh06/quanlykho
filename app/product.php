@@ -16,4 +16,12 @@ class product extends Model
     public function supplier(){
         return $this->hasOne('App\supplier', 'id', 'id_supplier');
     }
+
+    public function chitietnhapkho(){
+        return $this->hasMany('App\chitietnhapkho', 'id_SP','id');
+    }
+
+    public function detaixuatkho(){
+        return $this->hasMany('App\detaixuatkho', 'id_SP', 'id');
+    }
 }

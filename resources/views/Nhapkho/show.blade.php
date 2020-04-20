@@ -101,7 +101,7 @@
                                                             <td>{{$value->product->category->name}}</td>
                                                             <td>{{$value->product->supplier->TenNCC}}</td>
                                                             <td>{{$value->sl}}</td>
-                                                            <td>{{number_format($value->gianhap). $value->dvt}}</td>
+                                                            <td>{{number_format($value->gianhap)}}</td>
                                                             <td>{{$value->created_at}}</td>
                                                          </tr>
                                                          <?php } } ?>

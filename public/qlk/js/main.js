@@ -1,4 +1,15 @@
 $(document).ready(function() {
+    $('#datetimepicker1').datetimepicker({
+        format: "mm-Y",
+        // weekStart: 0,
+        // calendarWeeks: true,
+        // autoclose: true,
+        // todayHighlight: true,
+        // rtl: true,
+        // orientation: "auto"
+    });
+
+
     /**
      * onload page
      */
@@ -119,7 +130,7 @@ $(document).ready(function() {
         if (count > 1) {
             var content = $(this).parent().parent();
             content.remove();
-            setTienXuat();
+            setTienXuat($(this));
         }
 
     });
@@ -134,7 +145,7 @@ $(document).ready(function() {
             let number = $(this).attr('id');
             let validSP = $("select[name*='idSP" + number + "']").val();
             let valsl = $("input[name*='sl" + number + "']").val();
-            let valgiaxuat = $("input[name*='giaxuat" + number + "']").val();
+            let valgiaxuat = $("input[name*='giaxuat" + number + "']:checked").val();
             var ischeck = confirm('Bạn muốn xóa? Thao tác sẽ không được thu hồi');
             if (ischeck == true) {
                 var content = $(this).parent().parent();
@@ -167,15 +178,14 @@ $(document).ready(function() {
                 var option = data.map(res => {
                     return "<option value='" + res.id + "' >" + res.name + "</option> ?>"
                 })
-                here.append("<div class='detainProd row' style='padding: 0 15px'><div class='form-group col-sm-3'> <label class='col-sm-4 control-label'>Tên sản phẩm</label><div class='col-sm-8'><select required name='idSP" + number + "' id='idProduct" + number + "' onchange='loadChangeProduct(this)' class='form-control idProduct'> <option value='' selected disabled style='background: #eee'>Chọn sản phẩm</option>" + option + " </select><span id='errorid_SP" + number + "' ></span> </div></div><div class='form-group col-sm-3'><label class='col-sm-4 control-label'>Số lượng</label><div class='col-sm-8'><input type='number' name='sl" + number + "' placeholder='Số lượng' onchange='setTienXuat()' class='form-control' min='1' value='1'><span id='errorsoluong" + number + "' ></span></div></div><div class='form-group col-sm-3 radio-giaxuat'><div onchange='changePrice(this)' class='" + number + "'style='display: flex; justify-content: space-around'><div class='radio radio-danger radioXuat" + number + "'><input type='text' class=" + number + " style='display:none'><input type='radio' name='giaxuat" + number + "' id='rdio" + number + "' value='' class='gianhap'> <label for='rdio" + number + "'>Giá nhập</label></div><div class='radio radio-danger  radioXuat" + number + "'> <input type='radio' class='giaxuat' name='giaxuat" + number + "' id='radio" + number + "' value='' checked><label for='radio" + number + "'>Giá xuất</label></div> </div></div><div class=' col-sm-1 form-group removeBtn'><input type='button' class='btn btn-danger RmBtnXuat' id='rmBtn' value='Xóa'></div></div>");
+                here.append("<div class='detainProd row' style='padding: 0 15px'><div class='form-group col-sm-3'> <label class='col-sm-4 control-label'>Tên sản phẩm</label><div class='col-sm-8'><select required name='idSP" + number + "' id='idProduct" + number + "' onchange='loadProducts(this)' class='form-control idProduct'> <option value='' selected disabled style='background: #eee'>Chọn sản phẩm</option>" + option + " </select><span id='errorid_SP" + number + "' ></span> </div></div><div class='form-group col-sm-3'><label class='col-sm-4 control-label'>Số lượng</label><div class='col-sm-8'><input id='idProducts" + number + "' type='number' name='sl" + number + "' placeholder='Số lượng' onchange='loadChangeProduct(this)' class='form-control' min='1' value='1'><span id='errorsoluong" + number + "' ></span></div></div><div class='form-group col-sm-3 radio-giaxuat'><div onchange='changePrice(this)' class='" + number + "'style='display: flex; justify-content: space-around'><div class='radio radio-danger radioXuat" + number + "'><input type='text' class=" + number + " style='display:none'><input type='radio' name='giaxuat" + number + "' id='rdio" + number + "' value='' class='gianhap'> <label for='rdio" + number + "'>Giá nhập</label></div><div class='radio radio-danger  radioXuat" + number + "'> <input type='radio' class='giaxuat' name='giaxuat" + number + "' id='radio" + number + "' value='' checked><label for='radio" + number + "'>Giá xuất</label></div> </div></div><div class=' col-sm-1 form-group removeBtn'><input type='button' class='btn btn-danger RmBtnXuat' id='rmBtn' value='Xóa'></div></div>");
 
             })
     });
-    setTienXuat();
 });
 
-function changePrice() {
-    setTienXuat();
+function changePrice(value) {
+    setTienXuat(value);
 }
 
 
@@ -204,12 +214,11 @@ function loadClient() {
 
 //load change value gia xuat kho
 function loadChangeProduct(value) {
-    var idProduct = $(value).attr('id');
+    var idProduct = $(value).parent().parent().parent().find('select').val();
     var idgianhap = $(value).parent().parent().parent().find('.gianhap').attr('id');
     var idgiaxuat = $(value).parent().parent().parent().find('.giaxuat').attr('id');
     var idsl = $(value).parent().parent().parent().find('.soluong').attr('id');
-    var idVal = $(`#${idProduct}`).val();
-    $.get(`/api/loadProduct/${idVal}`).then((res) => {
+    $.get(`/api/loadProduct/${idProduct}`).then((res) => {
         if (res.mess) {
             $('#addBtnxuatkho').attr('disabled', 'disabled');
             alert('Sản phẩm đã hết nên không thể xuất hàng');
@@ -218,13 +227,13 @@ function loadChangeProduct(value) {
             $(`#${idgianhap}`).val(res.price_before);
             $(`#${idgiaxuat}`).val(res.price_after);
             $(`#${idsl}`).removeAttr('readonly')
-            setTienXuat();
         }
     })
+    setTienXuat(value)
 }
 // load tongtien xuat kho
-function setTienXuat() {
-    var id = $('.detainProd').parent().find('select').val();
+function setTienXuat(value) {
+    var id = $(value).parent().parent().parent().find('select').val();
     if (!id) id = 0;
     var count = Number($('.addProduct').find('.detainProd:last').find('.radio input').attr('class')) + 1;
     var total = 0;
@@ -238,10 +247,11 @@ function setTienXuat() {
         }
         let valueSL = $("input[name='" + nameSl + "']").val();
         let valueGia = $("input[name='" + nameGia + "']:checked").val();
+        console.log(valueSL, valueGia)
         valueGia == null ? valueGia = 0 : valueGia;
         valueSL == null ? valueSL = 0 : valueSL;
         $.get(`/api/checkProduct/${id}`).then((res) => {
-            if (Number(res) + 1 < valueSL) {
+            if (Number(res) < valueSL) {
                 $("input[name='" + nameSl + "']").val(res);
             }
         });
@@ -254,7 +264,7 @@ function setTienXuat() {
 function SetvalueXuatEdit(value) {
     var total = $('#totalTienXuat').val();
     var tongtien = total - value
-    $('#totalTienXuat').val(total - tongtien);
+    $('#totalTienXuat').val(tongtien);
     return tongtien;
 }
 
@@ -285,4 +295,53 @@ function setValue() {
         total = Number(total) + (valueSL * valueGia);
     }
     $('#totalTien').val(total);
+}
+
+//load change value gia xuat kho
+function loadProducts(value) {
+    var idProduct = $(value).attr('id');
+    var idgianhap = $(value).parent().parent().parent().find('.gianhap').attr('id');
+    var idgiaxuat = $(value).parent().parent().parent().find('.giaxuat').attr('id');
+    var idsl = $(value).parent().parent().parent().find('.soluong').attr('id');
+    var idVal = $(`#${idProduct}`).val();
+    $.get(`/api/loadProduct/${idVal}`).then((res) => {
+        if (res.mess) {
+            $('#addBtnxuatkho').attr('disabled', 'disabled');
+            alert('Sản phẩm đã hết nên không thể xuất hàng');
+        } else {
+            $('#addBtnxuatkho').removeAttr('disabled');
+            $(`#${idgianhap}`).val(res.price_before);
+            $(`#${idgiaxuat}`).val(res.price_after);
+            $(`#${idsl}`).removeAttr('readonly')
+            setTiensXuat();
+        }
+    })
+}
+
+// load tongtien xuat kho
+function setTiensXuat() {
+    var id = $('.detainProd').parent().find('select').val();
+    if (!id) id = 0;
+    var count = Number($('.addProduct').find('.detainProd:last').find('.radio input').attr('class')) + 1;
+    var total = 0;
+    for (var i = 0; i < count; i++) {
+        if ($("input[name='sl']").val() && i == 0) {
+            var nameSl = 'sl';
+            var nameGia = 'giaxuat';
+        } else {
+            var nameSl = 'sl' + i;
+            var nameGia = 'giaxuat' + i;
+        }
+        let valueSL = $("input[name='" + nameSl + "']").val();
+        let valueGia = $("input[name='" + nameGia + "']:checked").val();
+        valueGia == null ? valueGia = 0 : valueGia;
+        valueSL == null ? valueSL = 0 : valueSL;
+        $.get(`/api/checkProduct/${id}`).then((res) => {
+            if (Number(res) + 1 < valueSL) {
+                $("input[name='" + nameSl + "']").val(res);
+            }
+        });
+        total = Number(total) + (valueSL * valueGia);
+    }
+    $('#totalTienXuat').val(total);
 }

@@ -72,7 +72,17 @@ Route::get('/addxuat', 'XuatKhoController@create');
 Route::post('/addxuat', 'XuatKhoController@store');
 Route::get('editxuat/{id}','XuatKhoController@edit');
 Route::post('editxuat/{id}','XuatKhoController@update');
-Route::get('listSpxuatKho','XuatKhoController@listSpNhapKho');
+Route::get('listSpxuatKho','XuatKhoController@listSpxuatKho');
+
+/**
+ * Todo thongke
+ */
+Route::get('/thongkesp', 'thongkeController@thongkesp');
+// Route::get('/addxuat', 'XuatKhoController@create');
+Route::post('/thongkesp', 'thongkeController@postthongkesp');
+// Route::get('editxuat/{id}','XuatKhoController@edit');
+// Route::post('editxuat/{id}','XuatKhoController@update');
+// Route::get('listSpxuatKho','XuatKhoController@listSpxuatKho');
 
 
 });

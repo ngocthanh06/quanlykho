@@ -108,8 +108,8 @@
                                                           <td>{{$value->product->category->name}}</td>
                                                           <td>{{$value->product->supplier->TenNCC}}</td>
                                                           <td>{{$value->sl}}</td>
-                                                          <td>{{number_format($value->giaxuat). $value->dvt}} VND</td>
-                                                          <td>{{number_format($value->sl * $value->giaxuat)}} VND</td>
+                                                          <td>{{number_format($value->giaxuat). $value->dvt}}</td>
+                                                          <td>{{number_format($value->sl * $value->giaxuat)}}</td>
                                                           <td>{{$value->created_at}}</td>
                                                        </tr>
                                                        <?php } } ?>
@@ -121,7 +121,7 @@
                                                  <tbody>
                                                     <tr>
                                                        <td><strong>Tổng hóa đơn :</strong></td>
-                                                       <td>{{number_format($nk->Tongtien)}} VND</td>
+                                                       <td>{{number_format($nk->Tongtien)}}</td>
                                                     </tr>
                                                  </tbody>
                                               </table>

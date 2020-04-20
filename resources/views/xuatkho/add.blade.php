@@ -52,7 +52,7 @@
             <div class="form-group col-sm-3">
                <label class="col-sm-4 control-label">Tên sản phẩm</label>
                <div class="col-sm-8">
-                  <select name="idSP" id='idProduct' onchange='loadChangeProduct(this)' class="form-control idProduct" required>
+                  <select name="idSP" id='idProduct' onchange='loadProducts(this)' class="form-control idProduct" required>
                     <option value='' selected disabled style='background: #eee'>Chọn sản phẩm</option>
                      <?php foreach($prod as $p){ ?>
                      <option value="{{$p->id}}" >{{$p->name}}</option>

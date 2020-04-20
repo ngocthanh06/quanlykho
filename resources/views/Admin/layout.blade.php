@@ -28,6 +28,7 @@
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/select2.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="js/datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
     <link href="css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
     <script src="https://cdn.ckeditor.com/ckeditor5/12.3.1/classic/ckeditor.js"></script>
     <link type="text/css" href="{{asset('qlk/timepicker/css/bootstrap.min.css')}}" />
@@ -44,14 +45,14 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                        <img alt="image" class="img-circle" src="img/profile_small.jpg" />
+                        {{-- <img alt="image" class="img-circle" src="img/profile_small.jpg" /> --}}
                         </span>
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                        {{-- <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">{{Auth::user()->name}}</strong> --}}
+                        {{-- <a data-toggle="dropdown" class="dropdown-toggle" href="#"> --}}
+                        <span class="clear"> <span class="block m-t-xs"> <strong style="font-size: 25px; line-height: 25px" class="font-bold">Quản lý kho</strong>
                         {{-- </span> <span class="text-muted text-xs block">{{$role->name_role}}</span> </span> </a> --}}
                     </div>
                     <div class="logo-element">
-                        IN+
+                        Quản lý kho
                     </div>
                 </li>
                 {{-- @if($role->id == 1) --}}
@@ -75,6 +76,12 @@
                     <li class="<?php echo isset($open) && $open == 'Xuatkho' ?'active':'' ?>">
                         <a href="{{asset('/xuatkho')}}"><i class="fa fa-diamond"></i> <span class="nav-label">Xuất Kho</span></a>
                     </li>
+
+                    <li class="<?php echo isset($open) && $open == 'thongkesp' ?'active':'' ?>">
+                        <a href="{{asset('/thongkesp')}}"><i class="fa fa-diamond"></i> <span class="nav-label">Thống kê sản phẩm</span></a>
+                    </li>
+
+
                 {{-- @endif --}}
             </ul>
         </div>
@@ -83,16 +90,16 @@
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
                 <div class="navbar-header">
-                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    <a class="navbar-minimalize minimalize-styl-2 btn btn-primary "><i class="fa fa-bars"></i> </a>
                     <form role="search" class="navbar-form-custom" action="search_results.html">
                         <div class="form-group">
-                            <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                            <input type="text" placeholder="Tìm kiếm thông tin..." class="form-control" name="top-search" id="top-search">
                         </div>
                     </form>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <span class="m-r-sm text-muted welcome-message">Quản lý kho.</span>
+                        <span class="m-r-sm text-muted welcome-message">{{Auth::user()->name}}</span>
                     </li>
                     <li class="dropdown">
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
@@ -191,7 +198,7 @@
                     </li>
                     <li>
                         <a href="{{asset('logout')}}">
-                            <i class="fa fa-sign-out"></i> Log out
+                            <i class="fa fa-sign-out"></i> Đăng xuất
                         </a>
                     </li>
                     <li>
@@ -227,6 +234,8 @@
 <!-- Mainly scripts -->
 <script src="js/jquery-2.1.1.js"></script>
 <script src="js/select2.min.js"></script>
+<script src="js/datepicker/moment.min.js"></script>
+<script src="js/datepicker/bootstrap-datepicker.min.js"></script>
 <script src="js/main.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/plugins/jeditable/jquery.jeditable.js"></script>

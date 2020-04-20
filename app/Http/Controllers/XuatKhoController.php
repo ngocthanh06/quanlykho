@@ -205,7 +205,7 @@ class XuatKhoController extends Controller
     }
 
     /**
-     * Xóa chi tiết sản phẩm trong nhapkho
+     * Xóa chi tiết sản phẩm trong xuatkho
      */
     public function removeDetailProduct(Request $request){
         $Nhap = xuatKho::find($request['id']);
@@ -218,5 +218,15 @@ class XuatKhoController extends Controller
         if($dt){
             return response()->json(['code' => 200]);
         }
+    }
+
+    /**
+     * chi tiết sản phẩm trong xuatkho
+     */
+    public function listSpxuatKho(){
+        $list['list'] = detaixuatkho::with(['product' => function($q){
+            $q->with('supplier');
+        }])->get();
+        return view('Xuatkho.list', $list);
     }
 }

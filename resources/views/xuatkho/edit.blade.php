@@ -53,7 +53,7 @@
             <div class="form-group col-sm-3">
                <label class="col-sm-4 control-label">Tên sản phẩm</label>
                <div class="col-sm-8">
-                  <select name="idSP<?php echo $key!=0 ? $key : '' ?>" id='idProduct<?php echo $key!=0 ? $key : '' ?>' onchange='loadChangeProduct(this)' class="form-control idProduct" required>
+                  <select name="idSP<?php echo $key!=0 ? $key : '' ?>" id='idProduct<?php echo $key!=0 ? $key : '' ?>' onchange='loadProducts(this)' class="form-control idProduct" required>
                     <option value='' selected disabled style='background: #eee'>Chọn sản phẩm</option>
                      <?php foreach($prod as $p){ ?>
                      <option value="{{$p->id}}" <?php echo $dt->id_SP == $p->id ? 'selected' : '' ?> >{{$p->name}}</option>
@@ -64,7 +64,7 @@
             <div class="form-group col-sm-3">
                <label class="col-sm-4 control-label">Số lượng</label>
                <div class="col-sm-8">
-                  <input onchange="setTienXuat()" type="number" id='idProducts<?php echo $key!=0 ? $key : '' ?>' name="sl<?php echo $key!=0 ? $key : '' ?>" placeholder="Số lượng" class="form-control soluong" min="1" value="<?php echo $dt->sl ?>">
+                  <input onchange="loadChangeProduct(this)" type="number" id='idProducts<?php echo $key!=0 ? $key : '' ?>' name="sl<?php echo $key!=0 ? $key : '' ?>" placeholder="Số lượng" class="form-control soluong" min="1" value="<?php echo $dt->sl ?>">
                </div>
             </div>
             <div class='form-group col-sm-3 radio-giaxuat'>
@@ -104,7 +104,7 @@
       <div class="form-group">
          <label class="col-sm-1 control-label">Tổng tiền</label>
          <div class="col-sm-10">
-            <input type="text" id="totalTienXuat" value="" name="Tongtien" readonly required placeholder ='Tổng tiền' class='form-control'>
+            <input type="text" id="totalTienXuat" value="{{$detail->Tongtien}}" name="Tongtien" readonly required placeholder ='Tổng tiền' class='form-control'>
             <span id="errorname" ></span>
          </div>
       </div>
