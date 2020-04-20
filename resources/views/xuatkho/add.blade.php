@@ -63,7 +63,7 @@
             <div class="form-group col-sm-3">
                <label class="col-sm-4 control-label">Số lượng</label>
                <div class="col-sm-8">
-                  <input onchange="setTienXuat()" type="number" name="sl" placeholder="Số lượng" class="form-control" min="1" value="1">
+                  <input  onchange="loadChangeProduct(this)" type="number" name="sl" placeholder="Số lượng" class="form-control" min="1" value="1">
                </div>
             </div>
             <div class='form-group col-sm-3 radio-giaxuat'>

@@ -247,12 +247,12 @@ function setTienXuat(value) {
         }
         let valueSL = $("input[name='" + nameSl + "']").val();
         let valueGia = $("input[name='" + nameGia + "']:checked").val();
-        console.log(valueSL, valueGia)
         valueGia == null ? valueGia = 0 : valueGia;
         valueSL == null ? valueSL = 0 : valueSL;
         $.get(`/api/checkProduct/${id}`).then((res) => {
             if (Number(res) < valueSL) {
-                $("input[name='" + nameSl + "']").val(res);
+                let nameGia = $(value).attr('name');
+                $("input[name='" + nameGia + "']").val(res);
             }
         });
         total = Number(total) + (valueSL * valueGia);
