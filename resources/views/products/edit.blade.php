@@ -48,13 +48,13 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label class="col-sm-2 control-label">số lượng</label>
                 <div class="col-sm-10">
                     <input type="number" required value="{{$prod->soluong}}" min="1" name="soluong" placeholder="Nhập giá nhập" class="form-control">
                     <span id="errorsoluong" ></span>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Giá bán</label>
@@ -63,6 +63,31 @@
                     <span id="errorprice_before" ></span>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Ngày sản xuất</label>
+                <div class="col-sm-10">
+                    <div class='input-group date' id='ngaysx'>
+                        <input type='text' class="form-control" name="ngaysx" value="{{$prod->ngaysx}}" />
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                     </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Hạn sử dụng</label>
+                <div class="col-sm-10">
+                     <div class='input-group date' id='hansudung'>
+                        <input type='text' class="form-control" name="hansudung" value="{{$prod->ngayhh}}" />
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                     </div>
+                </div>
+            </div>
+
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Nhà Cung Cấp</label>

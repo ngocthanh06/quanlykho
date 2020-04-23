@@ -32,7 +32,8 @@ class NhapKhoController extends Controller
      */
     public function create()
     {
-        $prod['prod'] = Product::all();
+        $date = date('Y-m-d');
+        $prod['prod'] = Product::where([['status', 1], ['ngayhh','>=', $date]])->get();
         return view('Nhapkho.add', $prod);
     }
 
@@ -55,7 +56,7 @@ class NhapKhoController extends Controller
                     $val['sl'] = $detai['sl'];
                     $val['dvt'] = $detai['dvt'];
                     $val->save();
-                    $this->updateProduct($detai['id_SP'], $detai['sl'],'add');
+                    $this->updateProduct($detai['id_SP'], $detai['sl'],$detai['dvt'],$detai['gianhap'],'add');
                     $detai['id_SP'] = '';
                     $detai['gianhap'] = '';
                     $detai['sl'] = '';
@@ -128,7 +129,7 @@ class NhapKhoController extends Controller
         }
         while($countCheck > $countnhapkho){
             $num = $countCheck - 1;
-            $this->updateProduct($request['idSP'.$num], $request['sl'.$num], 'add');
+            $this->updateProduct($request['idSP'.$num], $request['sl'.$num],$request['dvt'.$num],$request['gianhap'.$num], 'add');
             $detailNew = new chitietnhapkho();
             $detailNew['id_nhapkho'] = $id;
             $detailNew['id_SP'] = $request['idSP'.$num];
@@ -152,6 +153,7 @@ class NhapKhoController extends Controller
                 $p['soluong'] = $p['soluong'] - ($prod['sl'] - $request['sl'.$count] );
                 Product::where('id', $dt['id_SP'])->update(['soluong'=> $p['soluong']]);
             }
+            $this->updateProduct($request['idSP'.$count], $request['sl'.$count],$request['dvt'.$count],$request['gianhap'.$count], 'add');
             $chitiet = chitietnhapkho::where([['id_nhapkho', $dt['id_nhapkho']],[ 'id_SP',$dt['id_SP']],['gianhap',$dt['gianhap']],['sl',$dt['sl']],['dvt',$dt['dvt']]])
             ->update(['id_nhapkho' => $id, 'id_SP'=>$request['idSP'.$count],'gianhap'=>$request['gianhap'.$count],'sl'=>$request['sl'.$count],'dvt'=>$request["dvt".$count]]);
         }
@@ -162,7 +164,7 @@ class NhapKhoController extends Controller
      * Update soluong product
      */
 
-    public function updateProduct($idProduct, $soluong, $condition){
+    public function updateProduct($idProduct, $soluong, $dvt, $gianhap, $condition){
         $product = Product::find($idProduct);
         $sl = 0;
         if($condition == 'add'){
@@ -171,6 +173,17 @@ class NhapKhoController extends Controller
         else{
             $sl = $product['soluong'] - $soluong;
         }
+        Product::where('id', $idProduct)->update(['soluong' => $sl,'dvt'=>$dvt,'price_before'=>$gianhap]);
+    }
+
+    /**
+     * Update soluong product
+     */
+
+    public function updateRemoveProduct($idProduct, $soluong){
+        $product = Product::find($idProduct);
+        $sl = 0;
+            $sl = $product['soluong'] - $soluong;
         Product::where('id', $idProduct)->update(['soluong' => $sl]);
     }
 
@@ -181,7 +194,7 @@ class NhapKhoController extends Controller
         $Nhap = Nhapkho::find($request['id']);
         $Nhap['Tongtien'] = $request['tongtien'];
         $Nhap->save();
-        $this->updateProduct($request['idSP'], $request['sl'],'remove');
+        $this->updateRemoveProduct($request['idSP'], $request['sl']);
         chitietnhapkho::where([['id_nhapkho', $request['id']],[ 'id_SP',$request['idSP']],['gianhap',$request['gianhap']],['sl',$request['sl']],['dvt',$request['dvt']]])->delete();
         return response()->json(['code' => 200]);
     }

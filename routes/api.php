@@ -20,6 +20,7 @@ Route::get('/loadClient/{id}','ClientController@loadClient');
 Route::get('/loadProduct/{id}','ProductController@loadProduct');
 Route::get('/checkProduct/{id}', 'ProductController@checkProduct');
 Route::get('/checkLoadProd/{id}','ProductController@checkLoadProd');
+Route::get('/checkProductNhap/{id}','ProductController@checkProductNhap');
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

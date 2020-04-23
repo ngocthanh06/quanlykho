@@ -13,6 +13,9 @@ $factory->define(product::class, function (Faker $faker) {
         'dvt' => 'vnd',
         'price_before' => $faker->randomNumber(6),
         'price_after' => $faker->randomNumber(6),
+        'ngaysx' => $faker->date(),
+        'ngayhh' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'status' => 1,
         'soluong' => 1
     ];
 });

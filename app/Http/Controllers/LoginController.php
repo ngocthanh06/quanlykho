@@ -18,7 +18,7 @@ class LoginController extends Controller
             'password' => $request->password
         ];
         if(Auth::attempt($data)){
-            return redirect()->intended('listCategory');
+            return redirect()->intended('home');
         }
         return back()->withInput()->with('error', 'Sai tên đăng nhập hoặc mật khẩu');
     }

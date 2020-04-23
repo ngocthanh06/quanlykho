@@ -9,6 +9,14 @@ $(document).ready(function() {
         // orientation: "auto"
     });
 
+    $('#ngaysx').datetimepicker({
+        format: "YYYY-mm-DD",
+    });
+
+    $('#hansudung').datetimepicker({
+        format: "YYYY-mm-DD",
+    });
+
 
     /**
      * onload page
@@ -80,7 +88,7 @@ $(document).ready(function() {
                 var option = data.map(res => {
                     return "<option value='" + res.id + "' >" + res.name + "</option> ?>"
                 })
-                here.append("<div class='detainProd row' style='padding: 0 15px'><input class=" + quatati + " style='display:none'><div class='form-group col-sm-3'> <label class='col-sm-4 control-label'>Tên sản phẩm</label><div class='col-sm-8'><select name='idSP" + quatati + "' class='form-control'> " + option + " </select><span id='errorid_SP" + quatati + "' ></span> </div></div><div class='form-group col-sm-3'><label class='col-sm-4 control-label'>Số lượng</label><div class='col-sm-8'><input type='number' name='sl" + quatati + "' placeholder='Số lượng' onchange='setValue()' class='form-control' min='1' value='1'><span id='errorsoluong" + quatati + "' ></span></div></div><div class='form-group col-sm-3'><label class='col-sm-4 control-label'>Giá nhập</label><div class='col-sm-8'><input type='number' onchange='setValue()' class='form-control' name='gianhap" + quatati + "' placeholder='Giá nhập' min='1' value='10000'><span id='errorgianhap" + quatati + "' ></span> </div> </div><div class='form-group col-sm-2'><label class='col-sm-4 control-label'>ĐVT</label><div class='col-sm-8'><input required type='text' name='dvt" + quatati + "' class='form-control' placeholder='Đơn vị tính'><span id='error' ></span> </div> </div><div class=' col-sm-1 form-group removeBtn'><input type='button' class='btn btn-danger RmBtn' id='rmBtn' value='Xóa'></div></div>");
+                here.append("<div class='detainProd row' style='padding: 0 15px'><input class=" + quatati + " style='display:none'><div class='form-group col-sm-3'> <label class='col-sm-4 control-label'>Tên sản phẩm</label><div class='col-sm-8'><select required onchange='changePriceNhap(this)' name='idSP" + quatati + "' class='form-control'> <option value=''>Chọn sản phẩm</option> " + option + " </select><span id='errorid_SP" + quatati + "' ></span> </div></div><div class='form-group col-sm-3'><label class='col-sm-4 control-label'>Số lượng</label><div class='col-sm-8'><input type='number' name='sl" + quatati + "' placeholder='Số lượng' onchange='setValue()' class='form-control' min='1' value='1'><span id='errorsoluong" + quatati + "' ></span></div></div><div class='form-group col-sm-3'><label class='col-sm-4 control-label'>Giá</label><div class='col-sm-8'><input id='gianhap" + quatati + "' onchange='setValue()' type='number' class='form-control gianhap' name='gianhap" + quatati + "' placeholder='Giá nhập' min='1' value=''><span id='errorgianhap" + quatati + "' ></span> </div> </div><div class='form-group col-sm-2'><label class='col-sm-4 control-label'>ĐVT</label><div class='col-sm-8'><input id='dvt" + quatati + "' required type='text' name='dvt" + quatati + "' class='form-control dvt' placeholder='Đơn vị tính'><span id='error' ></span> </div> </div><div class=' col-sm-1 form-group removeBtn'><input type='button' class='btn btn-danger RmBtn' id='rmBtn' value='Xóa'></div></div>");
                 setValue();
             })
     });
@@ -157,7 +165,8 @@ $(document).ready(function() {
                 })
             }
         }
-    })
+    });
+
 });
 
 
@@ -344,4 +353,15 @@ function setTiensXuat() {
         total = Number(total) + (valueSL * valueGia);
     }
     $('#totalTienXuat').val(total);
+}
+
+function changePriceNhap(value) {
+    var idProd = $(value).val();
+    var id = $(value).parent().parent().parent().find('.gianhap').attr('id');
+    var dvt = $(value).parent().parent().parent().find('.dvt').attr('id');
+    $.get(`/api/checkProductNhap/${idProd}`).then((res) => {
+        $(`#${id}`).val(res.price_before);
+        $(`#${dvt}`).val(res.dvt);
+        setValue();
+    })
 }

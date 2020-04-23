@@ -48,19 +48,43 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label class="col-sm-2 control-label">số lượng</label>
                 <div class="col-sm-10">
                     {{ Form::number('soluong', old('soluong'), array('required','placeholder'=>'','class'=>'form-control', 'min' => '1', 'required')) }}
                     <span id="errorsoluong" ></span>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="form-group">
                 <label class="col-sm-2 control-label">Giá bán</label>
                 <div class="col-sm-10">
                     {{ Form::number('price_before', old('price_before'), array('required','placeholder'=>'','class'=>'form-control')) }}
                     <span id="errorprice_before" ></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Ngày sản xuất</label>
+                <div class="col-sm-10">
+                    <div class='input-group date' id='ngaysx'>
+                        <input type='text' class="form-control" name="ngaysx" value={{date("Y-m-d")}} />
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                     </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Hạn sử dụng</label>
+                <div class="col-sm-10">
+                     <div class='input-group date' id='hansudung'>
+                        <input type='text' class="form-control" name="hansudung" value={{date("Y-m-d")}} />
+                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                     </div>
                 </div>
             </div>
 

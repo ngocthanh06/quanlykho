@@ -17,7 +17,8 @@
                         <div class="form-group col-sm-3">
                             <label class="col-sm-4 control-label">Tên sản phẩm</label>
                             <div class="col-sm-8">
-                                    <select name="idSP" class="form-control">
+                                    <select required onchange="changePriceNhap(this)" name="idSP" class="form-control">
+                                        <option value=''>Chọn sản phẩm</option>
                                          <?php foreach($prod as $p){ ?>
                                             <option value="{{$p->id}}" >{{$p->name}}</option>
                                          <?php } ?> 
@@ -31,15 +32,15 @@
                             </div>
                         </div>
                         <div class="form-group col-sm-3">
-                            <label class="col-sm-4 control-label">Giá nhập</label>
+                            <label class="col-sm-4 control-label">Giá</label>
                             <div class="col-sm-8">
-                                <input onchange="setValue()" type="number" class="form-control" name="gianhap" placeholder="Giá nhập" min="1" value="10000">
+                                <input id="gianhap" onchange="setValue()" type="number" class="form-control gianhap" name="gianhap" placeholder="Giá nhập" min="1" value="">
                             </div>
                         </div>
                         <div class="form-group col-sm-2">
                             <label class="col-sm-4 control-label">ĐVT</label>
                             <div class="col-sm-8">
-                                <input type="text" required name="dvt" class="form-control" placeholder="Đơn vị tính"">
+                                <input type="text" id="dvt" required name="dvt" class="form-control dvt" placeholder="Đơn vị tính"">
                             </div>
                         </div>   
                         <div class=" col-sm-1 form-group removeBtn">

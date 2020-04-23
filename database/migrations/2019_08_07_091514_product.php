@@ -22,6 +22,9 @@ class product extends Migration
             $table->double('price_after')->nullable();
             $table->double('price_before')->nullable();
             $table->string('dvt')->nullable();
+            $table->date('ngaysx')->nullable();
+            $table->date('ngayhh')->nullable();
+            $table->boolean('status')->default(1);
             $table->string('id_supplier')->nullable();
             $table->timestamps();
         });

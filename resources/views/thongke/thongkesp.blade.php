@@ -3,7 +3,7 @@
 @section('content')
 <div class="ibox float-e-margins">
    <div class="ibox-title">
-      <h5 style="margin-top:10px">Thống kê sản phẩm tháng </h5>
+      <h5 style="margin-top:10px">Kiểm kê sản phẩm tháng </h5>
       <div class="container">
          <div class="row">
             <form method="post">

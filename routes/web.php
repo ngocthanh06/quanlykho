@@ -42,6 +42,12 @@ Route::post('addProd', 'productController@store');
 Route::get('editProd/{id}', 'productController@show');
 Route::post('editProd/{id}', 'productController@update');
 Route::get('delProd/{id}', 'productController@destroy');
+Route::get('changeStatusProduct/{id}', 'productController@changeStatusProduct');
+Route::get('conhsd', 'productController@conhsd');
+Route::get('hethan', 'productController@hethan');
+Route::get('saphethan', 'productController@saphethan');
+Route::get('conkinhdoanh', 'productController@conkinhdoanh');
+Route::get('ngungkinhdoanh', 'productController@ngungkinhdoanh');
 
 /**
  * Todo Supplier
@@ -78,7 +84,7 @@ Route::get('listSpxuatKho','XuatKhoController@listSpxuatKho');
  * Todo thongke
  */
 Route::get('/thongkesp', 'thongkeController@thongkesp');
-// Route::get('/addxuat', 'XuatKhoController@create');
+Route::get('/home', 'thongkeController@home');
 Route::post('/thongkesp', 'thongkeController@postthongkesp');
 // Route::get('editxuat/{id}','XuatKhoController@edit');
 // Route::post('editxuat/{id}','XuatKhoController@update');
@@ -86,4 +92,4 @@ Route::post('/thongkesp', 'thongkeController@postthongkesp');
 
 
 });
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');

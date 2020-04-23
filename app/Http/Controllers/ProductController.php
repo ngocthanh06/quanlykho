@@ -44,10 +44,13 @@ class ProductController extends Controller
         $prod['name'] = $request->name;
         $prod['id_category'] = $request->id_category;
         $prod['dvt'] = $request->dvt;
-        $prod['soluong'] = $request->soluong;
+        // $prod['soluong'] = $request->soluong;
+        $prod['soluong'] = 1;
         $prod['price_after'] = $request->price_after;
         $prod['price_before'] = $request->price_before;
         $prod['id_supplier'] = $request->id_supplier;
+        $prod['ngaysx'] = $request->ngaysx;
+        $prod['ngayhh'] = $request->hansudung;
         $prod->save();
         return redirect()->intended('/listProduct')->with('success','Thêm thành công'); 
     }
@@ -91,9 +94,12 @@ class ProductController extends Controller
         $prod['id_supplier'] = $request->id_supplier;
         $prod['price_before'] = $request->price_before;
         $prod['price_after'] = $request->price_after;
-        $prod['soluong'] = $request->soluong;
+        // $prod['soluong'] = $request->soluong;
+        // $prod['soluong'] = 1;
         $prod['dvt'] = $request->dvt;
         $prod['id_category'] = $request->id_category;
+        $prod['ngaysx'] = $request->ngaysx;
+        $prod['ngayhh'] = $request->hansudung;
         $prod->save();
         return redirect()->intended('/listProduct')->with('success','Sửa thành công'); 
     }
@@ -112,7 +118,8 @@ class ProductController extends Controller
     }
 
     public function allProduct(){
-        $prod = product::all();
+        $date = date('Y-m-d');
+        $prod = Product::where([['status', 1], ['ngayhh','>=', $date]])->get();
         return $prod;
     }
 
@@ -140,5 +147,52 @@ class ProductController extends Controller
             $product = product::find($id);
             return $product->soluong;
         }
+    }
+
+    public function changeStatusProduct($id){
+        $product = product::find($id);
+        $product->status == 0 ? $product->status = 1 : $product->status = 0;
+        $product->save();
+        return redirect()->back();
+    }
+
+    public function checkProductNhap($id){
+        return product::find($id);
+    }
+
+    public function conhsd(){
+        $now = date('Y-m-d');
+        $prod['prod'] = product::with(['category', 'supplier'])
+                        ->where('ngayhh', '>', $now)
+                        ->paginate(10);
+        return view('products.conhsd', $prod);
+    }
+    public function hethan(){
+        $now = date('Y-m-d');
+        $prod['prod'] = product::with(['category', 'supplier'])
+                        ->where('ngayhh', '<', $now)
+                        ->paginate(10);
+        return view('products.hethan', $prod);
+    }
+    public function saphethan(){
+        $now = date('Y-m-d');
+        $prod['prod'] = product::with(['category', 'supplier'])
+                        ->where('ngayhh', '=', $now)
+                        ->paginate(10);
+        return view('products.saphethan', $prod);
+    }
+    public function conkinhdoanh(){
+        $now = date('Y-m-d');
+        $prod['prod'] = product::with(['category', 'supplier'])
+                        ->where('status', '=', 1)
+                        ->paginate(10);
+        return view('products.conkinhdoanh', $prod);
+    }
+    public function ngungkinhdoanh(){
+        $now = date('Y-m-d');
+        $prod['prod'] = product::with(['category', 'supplier'])
+                        ->where('status', '=', 0)
+                        ->paginate(10);
+        return view('products.ngungkinhdoanh', $prod);
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
     <div class="ibox float-e-margins">
         <div class="ibox-title">
-            <h5 style="margin-top:10px">Danh sách Sản Phẩm </h5>
+            <h5 style="margin-top:10px; color: red">Danh sách Sản Phẩm Hết Hạn Sử dụng </h5>
             <a href="{{asset('/addProd')}}" style="margin-left: 10px;"class="btn btn-success">Thêm Sản Phẩm</a>
         </div>
         <div class="ibox-content">
