@@ -29,7 +29,8 @@ class XuatKhoController extends Controller
      */
     public function create()
     {
-        $prod['prod'] = product::all();
+        $date = date('Y-m-d');
+        $prod['prod'] = Product::where([['status', 1], ['ngayhh','>=', $date]])->get();
         $prod['client'] = Client::all();
         return view('xuatkho.add', $prod);
     }

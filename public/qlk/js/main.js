@@ -10,11 +10,11 @@ $(document).ready(function() {
     });
 
     $('#ngaysx').datetimepicker({
-        format: "YYYY-mm-DD",
+        format: "YYYY-MM-DD",
     });
 
     $('#hansudung').datetimepicker({
-        format: "YYYY-mm-DD",
+        format: "YYYY-MM-DD",
     });
 
 
