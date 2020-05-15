@@ -1,4 +1,4 @@
-<?php $open = 'thongkesp' ?>
+<?php $open1 = 'thongkesp'; $open ='kiemhang' ?>
 @extends('Admin.layout')
 @section('content')
 <div class="ibox float-e-margins">
@@ -28,7 +28,7 @@
          <div class="col-lg-12">
             <div class="ibox float-e-margins">
                <div class="ibox-title">
-                  <h5>Bảng chi tiết thống kê sản phẩm</h5>
+               <h5>Bảng chi tiết thống kê sản phẩm theo tháng <?php if(isset($month)) echo $month; ?></h5>
                   <div class="ibox-tools">
                      <a class="collapse-link">
                      <i class="fa fa-chevron-up"></i>
@@ -90,21 +90,23 @@
                                     ?>
                               </td>
                               <td> 
-                                 <?php 
+                                 <?php $num = 0;
                                     if(isset($tk->chitietnhapkho)){
                                       foreach($tk->chitietnhapkho as $ct){
-                                            echo $ct->sl == 0 ? 0 : $ct->sl;
+                                            $ct->sl == 0 ? 0 : $num += $ct->sl;;
                                       }
+                                      echo $num;
                                     }
                                     ?>
                               </td>
                               <td>{{$tk->soluong}}</td>
                               <td>
-                                    <?php
+                                    <?php $num = 0;
                                         if(isset($tk->detaixuatkho)){
                                           foreach($tk->detaixuatkho as $ct){
-                                                echo $ct->sl == 0 ? 0 : $ct->sl;
+                                                $ct->sl == 0 ? 0 : $num += $ct->sl;
                                           }
+                                          echo $num;
                                         }
                                     ?>
                               </td>

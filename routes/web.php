@@ -86,6 +86,14 @@ Route::get('listSpxuatKho','XuatKhoController@listSpxuatKho');
 Route::get('/thongkesp', 'thongkeController@thongkesp');
 Route::get('/home', 'thongkeController@home');
 Route::post('/thongkesp', 'thongkeController@postthongkesp');
+Route::get('/kiemke', 'thongkeController@kiemke');
+Route::post('/kiemke','thongkeController@searchKiemke');
+Route::get('/kiemke/addThucte/{id}','ThongkeController@addThucte');
+Route::post('/kiemke/addThucte/{id}','ThongkeController@postaddThucte');
+Route::get('/kiemke/editThucte/{id}','ThongkeController@editThucte');
+Route::post('/kiemke/editThucte/{id}','ThongkeController@postEditThucte');
+Route::get('/kiemke/thongketonkho','ThongkeController@thongketonkho');
+
 // Route::get('editxuat/{id}','XuatKhoController@edit');
 // Route::post('editxuat/{id}','XuatKhoController@update');
 // Route::get('listSpxuatKho','XuatKhoController@listSpxuatKho');
@@ -93,3 +101,17 @@ Route::post('/thongkesp', 'thongkeController@postthongkesp');
 
 });
 // Route::get('/home', 'HomeController@index')->name('home');
+/**
+ * Todo Khách Hàng
+ */
+Route::get('/listClient', 'ClientController@index');
+Route::get('addClient', 'ClientController@create');
+Route::post('addClient', 'ClientController@store');
+Route::get('editClient/{id}', 'ClientController@show');
+Route::post('editClient/{id}', 'ClientController@update');
+Route::get('delClient/{id}', 'ClientController@destroy');
+/**
+ * Todo user
+ */
+Route::get('user/update/{id}', 'Usercontroller@show');
+Route::post('user/update/{id}', 'Usercontroller@update');

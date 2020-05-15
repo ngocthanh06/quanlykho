@@ -1,4 +1,4 @@
-<?php $open = 'listProduct' ?>
+<?php $open = 'saphethan'; $open1 = 'Product'; ?>
 @extends('Admin.layout')
 @section('content')
     <div class="ibox float-e-margins">
@@ -35,9 +35,9 @@
                         <td>{{$pr->price_before}}</td>
                         <td>{{$pr->supplier->TenNCC}}</td>
                         <td>
-                                @if(strtotime($pr->ngayhh) - strtotime(date('Y-m-d')) > 0)
+                                @if(strtotime($pr->ngayhh) - strtotime(date('Y-m-d')) > 2592000)
                                 <span class="badge badge-primary">Còn hạn</span>
-                                @elseif(strtotime($pr->ngayhh) - strtotime(date('Y-m-d')) == 0)
+                                @elseif(strtotime($pr->ngayhh) - strtotime(date('Y-m-d')) < 2592000 && strtotime($pr->ngayhh) - strtotime(date('Y-m-d')) > 0)
                                 <span class="badge badge-warning">Sắp hết hạn</span>
                                 @else
                                 <span class="badge badge-danger">Hết hạn</span>

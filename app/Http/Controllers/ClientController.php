@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Client;
 use Illuminate\Http\Request;
+use App\Http\Requests\addClientRequest;
+use App\Http\Requests\editClientRequest;
 
 class ClientController extends Controller
 {
@@ -19,7 +21,8 @@ class ClientController extends Controller
      */
     public function index()
     {
-        //
+        $client['client'] = Client::paginate(10);
+        return view('clients.show', $client);
     }
 
     /**
@@ -29,7 +32,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view('clients.add');
     }
 
     /**
@@ -38,9 +41,15 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(addClientRequest $request)
     {
-        //
+        $client = new Client();
+        $client['name'] = $request->name;
+        $client['address'] = $request->address;
+        $client['phone'] = $request->phone;
+        $client['email'] = $request->email;
+        $client->save();
+        return redirect()->intended('/listClient')->with('success','Thêm thành công'); 
     }
 
     /**
@@ -49,9 +58,10 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function show(Client $client)
-    {
-        //
+    public function show($id)
+    {    
+         $client['client'] = Client::find($id);
+        return view('clients.edit', $client);
     }
 
     /**
@@ -72,9 +82,15 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(editClientRequest $request, $id)
     {
-        //
+        $client = Client::find($id);
+        $client['name'] = $request->name;
+        $client['address'] = $request->address;
+        $client['phone'] = $request->phone;
+        $client['email'] = $request->email;
+        $client->save();
+        return redirect()->intended('/listClient')->with('success','Thêm thành công'); 
     }
 
     /**
@@ -83,8 +99,10 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy($id,Client $client)
     {
-        //
+        $client = Client::find($id);
+        $client->delete();
+        return redirect()->intended('/listClient')->with('success','Xóa Thành Công'); 
     }
 }

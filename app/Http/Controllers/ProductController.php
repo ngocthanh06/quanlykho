@@ -175,9 +175,10 @@ class ProductController extends Controller
         return view('products.hethan', $prod);
     }
     public function saphethan(){
-        $now = date('Y-m-d');
+        $day = date('Y-m-d');
+        $now = strtotime(' +30 day ',strtotime (date('Y-m-d')));
         $prod['prod'] = product::with(['category', 'supplier'])
-                        ->where('ngayhh', '=', $now)
+                        ->where([['ngayhh', '<=', date('Y-m-d',$now)], ['ngayhh', '>=', $day]])
                         ->paginate(10);
         return view('products.saphethan', $prod);
     }

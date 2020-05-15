@@ -24,4 +24,7 @@ class product extends Model
     public function detaixuatkho(){
         return $this->hasMany('App\detaixuatkho', 'id_SP', 'id');
     }
+    public function kiemke(){
+        return $this->hasOne('App\kiemke', 'id_sp', 'id');
+    }
 }

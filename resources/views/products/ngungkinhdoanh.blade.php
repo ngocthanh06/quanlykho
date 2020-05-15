@@ -1,4 +1,4 @@
-<?php $open = 'listProduct' ?>
+<?php $open = 'ngungkinhdoanh'; $open1 = 'Product'; ?>
 @extends('Admin.layout')
 @section('content')
     <div class="ibox float-e-margins">
