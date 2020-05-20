@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 use Illuminate\Support\Facades\Auth;
-use App\Models\account;
+use App\User;
 use Closure;
 
 class CheckRole
@@ -11,11 +11,11 @@ class CheckRole
     public function handle($request, Closure $next)
     {
 
-//        $data = account::find(Auth::user()->id_role);
+       $data = User::find(Auth::user()->role_id);
 
-        // if(Auth::user()->id_role == 1)
-        //     return redirect()->intended('admin/user');
-        // else
+        if(Auth::user()->role_id != 1)
+            return redirect()->intended('home');
+        else
         return $next($request);
     }
 }

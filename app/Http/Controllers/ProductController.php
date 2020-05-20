@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\addproduct;
+use App\Http\Requests\editproduct;
 use App\product;
 use App\category;
 use App\supplier;
@@ -38,7 +39,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(addproduct $request)
     {
         $prod = new Product();
         $prod['name'] = $request->name;
@@ -87,7 +88,7 @@ class ProductController extends Controller
      * @param  \App\product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,  $id)
+    public function update(editproduct $request,  $id)
     {
         $prod = product::find($id);
         $prod['name'] = $request->name;

@@ -20,6 +20,7 @@ $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => 'admin',
         'email' => 'admin@gmail.com',
+        'role_id' => 1,
         'password' => bcrypt('123123'), // password
         'remember_token' => Str::random(10),
     ];

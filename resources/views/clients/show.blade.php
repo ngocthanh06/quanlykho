@@ -4,7 +4,9 @@
     <div class="ibox float-e-margins">
         <div class="ibox-title">
             <h5 style="margin-top:10px">Danh sách Khách Hàng</h5>
+            @if(Auth::user()->role_id == 1)
             <a href="{{asset('/addClient')}}" style="margin-left: 10px;"class="btn btn-success">Thêm Khách Hàng</a>
+            @endif
         </div>
         <div class="ibox-content">
             <table class="table">
@@ -25,9 +27,12 @@
                     <td>{{$ct->created_at}}</td>
                     <td>{{$ct->updated_at}}</td>
                     <td>
-                     
+                        @if(Auth::user()->role_id == 1)
                         <a href="{{asset('/editClient/'.$ct->id)}}" class="btn btn-sm btn-danger">Sửa</a>
                         <a href="{{asset('/delClient/'.$ct->id)}}" class="btn btn-info btn-sm" >Xóa</a>
+                        @else 
+                        <a style="color:red" disabled>Không được cấp quyền</a>
+                        @endif
                     </td>
                     </tr>
                     @endforeach

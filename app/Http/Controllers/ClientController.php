@@ -101,8 +101,6 @@ class ClientController extends Controller
      */
     public function destroy($id,Client $client)
     {
-        $client = Client::find($id);
-        $client->delete();
-        return redirect()->intended('/listClient')->with('success','Xóa Thành Công'); 
+        return redirect()->intended('listClient')->with('error','Không thể xóa khách hàng');
     }
 }

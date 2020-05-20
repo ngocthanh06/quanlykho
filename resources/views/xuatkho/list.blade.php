@@ -5,7 +5,9 @@
    <div class="ibox-title">
       <h5 style="margin-top:10px">Sản phẩm xuất kho </h5>
       <a href="{{asset('/xuatkho')}}" style="margin-left: 10px;"class="btn btn-danger">Quay lại</a>
+      @if(Auth::user()->role_id == 1)
       <a href="{{asset('/addxuat')}}" style="margin-left: 10px;"class="btn btn-success">Xuất kho mới</a>
+      @endif
    </div>
    <div class="wrapper wrapper-content animated fadeInRight">
       <div class="row">

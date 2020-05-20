@@ -4,7 +4,9 @@
 <div class="ibox float-e-margins">
    <div class="ibox-title">
       <h5 style="margin-top:10px">Đơn nhập hàng </h5>
+      @if(Auth::user()->role_id == 1)
       <a href="{{asset('/addNhap')}}" style="margin-left: 10px;"class="btn btn-success">Tạo mới đơn hàng</a>
+      @endif
       <a href="{{asset('/listSpNhapKho')}}" style="margin-left: 10px;"class="btn btn-primary">Danh sách sản phẩm nhập kho</a>
    </div>
    <div class="wrapper wrapper-content animated fadeInRight">
@@ -57,8 +59,10 @@
                               <td>{{$nk->created_at}}</td>
                               <td>
                                  <a class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal{{$nk->id}}">Chi tiết</a>
+                                 @if(Auth::user()->role_id == 1)
                                  <a href="{{asset('/editNhap/'.$nk->id)}}" class="btn btn-sm btn-danger">Sửa</a>
                                  <a href="{{asset('/delNhap/'.$nk->id)}}" class="btn btn-info btn-sm" >Xóa</a>
+                                 @endif
                                  <div id="myModal{{$nk->id}}" class="modal fade" role="dialog">
                                     <div class="modal-dialog modal-lg">
                                        <!-- Modal content-->

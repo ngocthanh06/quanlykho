@@ -4,7 +4,9 @@
     <div class="ibox float-e-margins">
         <div class="ibox-title">
             <h5 style="margin-top:10px">Danh sách Sản Phẩm Sắp Hết Hạn Sử Dụng </h5>
+            @if(Auth::user()->role_id == 1)
             <a href="{{asset('/addProd')}}" style="margin-left: 10px;"class="btn btn-success">Thêm Sản Phẩm</a>
+            @endif
         </div>
         <div class="ibox-content">
             <table class="table">
@@ -51,8 +53,10 @@
                             @endif
                         </td>
                     <td>
+                        @if(Auth::user()->role_id == 1)
                         <a href="{{asset('/editProd/'.$pr->id)}}" class="btn btn-sm btn-success">Sửa</a>
                         <a href="{{asset('/delProd/'.$pr->id)}}" class="btn btn-warning btn-sm" >Xóa</a>
+                        @endif
                     </td>
                     </tr>
                     @endforeach

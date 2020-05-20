@@ -5,7 +5,7 @@
    <div class="ibox-title">
       <h5 style="margin-top:10px">Kiểm kê sản phẩm tháng </h5>
       <div class="container">
-         <div class="row">
+         <div class="row"> 
             <form method="post">
                @csrf
                <div class='col-sm-2'>
@@ -79,10 +79,12 @@
                                   echo $tk->soluong - $tk->kiemke->soluong; ?>
                               </td>
                               <td>
+                                 @if(Auth::user()->role_id == 1)
                                 <a href="{{asset('/kiemke/addThucte/'.$tk->id)}}" class="btn btn-warning btn-sm">Thêm </a>
                                 <?php  if(isset($tk->kiemke)) { ?>
                                 <a href="{{asset('/kiemke/editThucte/'.$tk->id)}}" class="btn btn-danger btn-sm">Sửa</a>
                                 <?php }?>
+                                @endif
                                </td>
                            </tr>
                            <?php }} ?>

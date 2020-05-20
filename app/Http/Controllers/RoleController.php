@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\addrole;
+use App\Http\Requests\editrole;
 use App\role;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $role['role'] = role::paginate(10);
+        return view('role.show', $role);
     }
 
     /**
@@ -24,7 +26,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('Role.add');
     }
 
     /**
@@ -33,9 +35,14 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(addrole $request)
     {
-        //
+        $role = new role();
+        $role['name'] = $request->name;
+        $role['desc'] = $request->desc;
+        $role->save();
+
+        return redirect()->intended('/listrole')->with('success', 'Thêm quyền thành công');
     }
 
     /**
@@ -44,9 +51,10 @@ class RoleController extends Controller
      * @param  \App\role  $role
      * @return \Illuminate\Http\Response
      */
-    public function show(role $role)
+    public function show($id)
     {
-        //
+        $role['role'] = role::find($id);
+        return view('role.edit', $role);
     }
 
     /**
@@ -67,9 +75,13 @@ class RoleController extends Controller
      * @param  \App\role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, role $role)
+    public function update(editrole $request, $id)
     {
-        //
+        $role = role::find($id);
+        $role->name = $request->name;
+        $role->desc = $request->desc;
+        $role->save();
+        return redirect()->intended('/listrole')->with('success','Sửa thành công');
     }
 
     /**
@@ -78,8 +90,8 @@ class RoleController extends Controller
      * @param  \App\role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(role $role)
+    public function destroy($id)
     {
-        //
+        return redirect()->intended('/listrole')->with('error','Không thể xóa quyền');
     }
 }
