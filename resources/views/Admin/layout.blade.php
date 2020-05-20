@@ -61,16 +61,9 @@
                     <a href="{{asset('/home')}}"><i class="fa fa-th-large"></i> <span class="nav-label">Home</span></a>
                 </li>
 
-                <li class="<?php echo isset($open) && $open == 'listrole' ?'active':'' ?>">
-                    <a href="{{asset('/listrole')}}"><i class="fa fa-exclamation-circle"></i> <span class="nav-label">Quyền người dùng</span></a>
-                </li>
+                
 
-                <li class="<?php echo isset($open) && $open == 'client' ?'active':'' ?>">
-                    <a href="{{asset('/listClient')}}"><i class="fa fa-male"></i> <span class="nav-label">Khách hàng</span></a>
-                </li>
-                <li class="<?php echo isset($open) && $open == 'users' ?'active':'' ?>">
-                    <a href="{{asset('/listusers')}}"><i class="fa fa-users"></i> <span class="nav-label">Người dùng</span></a>
-                </li>
+               
                     <li class="<?php echo isset($open) && $open == 'listCategory' ?'active':'' ?>">
                         <a href="{{asset('/listCategory')}}"><i class="fa fa-bars"></i> <span class="nav-label">Danh sách Loại Hàng</span></a>
                     </li>
@@ -91,8 +84,14 @@
                         <a href="{{asset('/listsupplier')}}"><i class="fa fa-building-o"></i> <span class="nav-label">Danh sách Nhà Sản Xuất</span></a>
                     </li>
                     <li class="<?php echo isset($open) && $open == 'listnhacungcap' ?'active':'' ?>">
-                        <a href="{{asset('/listnhacungcap')}}"><i class="fa fa-building"></i> <span class="nav-label">Danh sách Nhà Cung Cấp</span></a>
+                        <a href="{{asset('/listnhacungcap')}}"><i class="fa fa-building-o"></i> <span class="nav-label">Danh sách Nhà Cung Cấp</span></a>
                     </li>
+
+                    <li class="<?php echo isset($open) && $open == 'client' ?'active':'' ?>">
+                        <a href="{{asset('/listClient')}}"><i class="fa fa-male"></i> <span class="nav-label">Khách hàng</span></a>
+                    </li>
+                    
+
                     <li class="<?php echo isset($open) && $open == 'Nhapkho' ?'active':'' ?>">
                         <a href="{{asset('/Nhapkho')}}"><i class="fa fa-cloud-download"></i> <span class="nav-label">Nhập Kho</span></a>
                     </li>
@@ -113,6 +112,15 @@
                         <a href="{{ asset('/kiemke')}}"><i class="fa fa-area-chart"></i> 
                             <span class="nav-label">Kiểm kê</span></a>
                     </li>
+
+                    <li class="<?php echo isset($open) && $open == 'listrole' ?'active':'' ?>">
+                        <a href="{{asset('/listrole')}}"><i class="fa fa-exclamation-circle"></i> <span class="nav-label">Quyền người dùng</span></a>
+                    </li>
+
+                    <li class="<?php echo isset($open) && $open == 'users' ?'active':'' ?>">
+                        <a href="{{asset('/listusers')}}"><i class="fa fa-users"></i> <span class="nav-label">Người dùng</span></a>
+                    </li>
+
                     <li class="<?php echo isset($open) && $open == 'editUser' ?'active':'' ?>">
                         <a href="{{ asset('/user/update/'. Auth::user()->id )}}"><i class="fa fa-edit"></i> 
                             <span class="nav-label">Sửa thông tin</span></a>
