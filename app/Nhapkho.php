@@ -18,4 +18,7 @@ class Nhapkho extends Model
     public function chitietnhapkho(){
         return $this->hasMany('App\chitietnhapkho','id_nhapkho', 'id');
     }
+    public function nhasanxuat(){
+        return $this->hasOne('App\nhasanxuat', 'id', 'id_nhasx');
+    }
 }

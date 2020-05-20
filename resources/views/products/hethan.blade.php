@@ -17,7 +17,7 @@
                     <th>Số lượng</th>
                     <th>Giá nhập</th>
                     <th>Giá bán</th>
-                    <th>Nhà Cung Cấp</th>
+                    <th>Nhà sản xuất</th>
                     <th>Hạn sử dụng</th>
                     <th>Trạng thái</th>
                     <th>Tùy chọn</th>

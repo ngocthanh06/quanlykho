@@ -11,6 +11,17 @@
     <div class="ibox-content">
         <form method="post" class="form-horizontal">
             {{ csrf_field() }}
+            <div class="form-group">
+                <label class="col-sm-1 control-label">Tên nhà cung cấp</label>
+                <div class="col-sm-10" style="margin: 0 -10px">
+                   <select name="nhasx" id="nameClient" onchange="loadClient()" required class="form-control js-example-tags">
+                     <option value="" selected disabled>Chọn tên nhà cung cấp</option>
+                        @foreach($nhasx as $nsx)
+                   <option value="{{$nsx->id}}">{{$nsx->TenNSX}}</option>
+                        @endforeach
+                   </select>
+                </div>
+             </div>
                 <div class="row addProduct"   > 
                     <div class="detainProd row" style='padding: 0 15px'>
                         <input type="text" class='0' style="display: none" >

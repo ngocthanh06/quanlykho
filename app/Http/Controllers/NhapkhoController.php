@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Nhapkho;
+use App\Nhasanxuat;
 use App\Product;
 use App\chitietnhapkho;
 use Auth;
@@ -17,7 +18,7 @@ class NhapKhoController extends Controller
      */
     public function index()
     {
-        $Nhap['Nhap'] = Nhapkho::with(['user','chitietnhapkho' => function($q) {
+        $Nhap['Nhap'] = Nhapkho::with(['user','nhasanxuat','chitietnhapkho' => function($q) {
             $q->with(['product'=> function($re){
                 $re->with(['category', 'supplier']);
             }]);
@@ -34,12 +35,14 @@ class NhapKhoController extends Controller
     {
         $date = date('Y-m-d');
         $prod['prod'] = Product::where([['status', 1], ['ngayhh','>=', $date]])->get();
+        $prod['nhasx'] = Nhasanxuat::all();
         return view('Nhapkho.add', $prod);
     }
 
     public function store(Request $request)
     {
         $nhap = new Nhapkho();
+        $nhap['id_nhasx'] = $request->nhasx;
         $nhap['user_id'] = Auth::user()->id;
         $nhap['Noidung'] = $request->Noidung;
         $nhap['Tongtien'] = $request->Tongtien;
@@ -91,9 +94,11 @@ class NhapKhoController extends Controller
      */
     public function edit($id)
     {
+        $prod['nhasx'] = Nhasanxuat::all();
         $prod['prod'] = Product::all();
         $prod['id'] = $id;
         $prod['nhapkho'] = Nhapkho::with('chitietnhapkho')->where('id', $id)->get();
+        // return $prod['nhapkho'];
         return view('Nhapkho.edit', $prod);
     }
 
@@ -116,6 +121,7 @@ class NhapKhoController extends Controller
     {
         $nhap = Nhapkho::find($id);
         $count = 0;$countCheck = 0;
+        $nhap['id_nhasx'] = $request->nhasx;
         $nhap['user_id'] = Auth::user()->id;
         $nhap['Noidung'] = $request->Noidung;
         $nhap['Tongtien'] = $request->Tongtien;

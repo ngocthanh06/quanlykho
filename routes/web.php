@@ -60,6 +60,18 @@ Route::post('editsupp/{id}', 'SupplierController@update');
 Route::get('delsupp/{id}', 'SupplierController@destroy');
 
 /**
+ * Todo cung cấp
+ * Nhà cung sản xuất thành nhà cung cấp và ngược lại
+ */
+Route::get('/listnhacungcap', 'NhasanxuatController@index');
+Route::get('/addnhasx', 'NhasanxuatController@create');
+Route::post('/addnhasx', 'NhasanxuatController@store');
+Route::get('editnhasx/{id}', 'NhasanxuatController@show');
+Route::post('editnhasx/{id}', 'NhasanxuatController@update');
+Route::get('delnhasx/{id}', 'NhasanxuatController@destroy');
+
+
+/**
  * Todo nhapkho
  */
 Route::get('/Nhapkho', 'NhapKhoController@index');

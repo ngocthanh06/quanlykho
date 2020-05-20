@@ -37,6 +37,7 @@
                               <th>Mã nhập kho</th>
                               <th>Nội dung</th>
                               <th>Người nhập</th>
+                              <th>Nhà cung cấp</th>
                               <th>Số lượng sản phẩm nhập</th>
                               <th>Tổng Tiền</th>
                               <th>Ngày tạo</th>
@@ -50,6 +51,7 @@
                               <td>{{$nk->id}}</td>
                               <td>{{$nk->Noidung}}</td>
                               <td>{{$nk->user->name}}</td>
+                              <td>{{$nk->nhasanxuat->TenNSX}}</td>
                               <td>{{count($nk->chitietnhapkho)}}</td>
                               <td>{{number_format($nk->Tongtien)}}</td>
                               <td>{{$nk->created_at}}</td>
@@ -135,6 +137,7 @@
                               <th>Mã đơn hàng</th>
                               <th>Nội dung</th>
                               <th>Người nhập</th>
+                              <th>Nhà cung cấp</th>
                               <th>Số lượng sản phẩm nhập</th>
                               <th>Tổng Tiền</th>
                               <th>Ngày tạo</th>

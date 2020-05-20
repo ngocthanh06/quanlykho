@@ -27,4 +27,6 @@ class product extends Model
     public function kiemke(){
         return $this->hasOne('App\kiemke', 'id_sp', 'id');
     }
+
+    
 }

@@ -81,10 +81,11 @@
                     </li>
                     
                     <li class="<?php echo isset($open) && $open == 'listsupplier' ?'active':'' ?>">
-                        <a href="{{asset('/listsupplier')}}"><i class="fa fa-building-o"></i> <span class="nav-label">Danh sách Nhà Cung Cấp</span></a>
-                        
+                        <a href="{{asset('/listsupplier')}}"><i class="fa fa-building-o"></i> <span class="nav-label">Danh sách Nhà Sản Xuất</span></a>
                     </li>
-
+                    <li class="<?php echo isset($open) && $open == 'listnhacungcap' ?'active':'' ?>">
+                        <a href="{{asset('/listnhacungcap')}}"><i class="fa fa-building-o"></i> <span class="nav-label">Danh sách Nhà Cung Cấp</span></a>
+                    </li>
                     <li class="<?php echo isset($open) && $open == 'Nhapkho' ?'active':'' ?>">
                         <a href="{{asset('/Nhapkho')}}"><i class="fa fa-cloud-download"></i> <span class="nav-label">Nhập Kho</span></a>
                     </li>
@@ -250,10 +251,10 @@
                 </div>
                 <div class="footer">
                     <div class="pull-right">
-                        10GB of <strong>250GB</strong> Free.
+                       <strong>VLXD</strong>
                     </div>
                     <div>
-                        <strong>Copyright</strong>  &copy; 2020
+                        <strong>Công ty TNHH Kha Mỹ Trang</strong>
                     </div>
                 </div>
             </div>

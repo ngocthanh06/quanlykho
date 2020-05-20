@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Nhapkho extends Migration
+class CreateNhasanxuatsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class Nhapkho extends Migration
      */
     public function up()
     {
-        Schema::create('nhapkho', function (Blueprint $table) {
+        Schema::create('nhasanxuats', function (Blueprint $table) {
             $table->Increments('id');
-            $table->integer('user_id')->nullable();
-            $table->text('Noidung')->nullable();
-            $table->integer('id_nhasx')->nullable();
-            $table->double('Tongtien')->nullable();
+            $table->string('TenNSX')->nullable();
+            $table->string('Email')->nullable();
+            $table->string('SDT')->nullable();
+            $table->string('address')->bullable();
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class Nhapkho extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nhapkho');
+        Schema::dropIfExists('nhasanxuats');
     }
 }

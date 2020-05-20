@@ -1,18 +1,18 @@
-<?php $open = 'account' ?>
+<?php $open = 'listsupplier' ?>
 @extends('Admin.layout')
 @section('content')
     <div class="ibox-title">
-        <h5><a href="{{asset('admin/user')}}"> <i> <small> Danh sách Nhà Cung Cấp </small> </i> </a></h5>
+        <h5><a href="{{asset('admin/user')}}"> <i> <small> Danh sách Nhà Sản Xuất </small> </i> </a></h5>
         <h5>&nbsp;/&nbsp;</h5>
         {!! $open == 'account' ? '
-        <h5>Thêm Nhà Cung Cấp</h5>
+        <h5>Thêm Nhà Sản Xuất</h5>
         ':''!!}
     </div>
     <div class="ibox-content">
         <form method="post" class="form-horizontal">
             {{ csrf_field() }}
             <div class="form-group">
-                <label class="col-sm-2 control-label">Tên Nhà Cung Cấp</label>
+                <label class="col-sm-2 control-label">Tên Nhà Sản Xuất</label>
                 <div class="col-sm-10">
                     {{ Form::text('TenNCC', old('TenNCC'), array('required','placeholder'=>'','class'=>'form-control')) }}
                     <span id="errorTenNCC" ></span>

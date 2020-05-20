@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         factory(App\product::class,10)->create();
         factory(App\role::class,1)->create();
         factory(App\Client::class,5)->create();
+        factory(App\Nhasanxuat::class,10)->create();
     }
 }

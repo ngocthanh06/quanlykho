@@ -90,7 +90,7 @@
 
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">Nhà Cung Cấp</label>
+                <label class="col-sm-2 control-label">Nhà Sản Xuất</label>
                 <div class="col-sm-10">
                         <select class="form-control" name="id_supplier">
                             @foreach($supplier as $sup)
