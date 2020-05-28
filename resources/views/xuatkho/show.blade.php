@@ -5,7 +5,7 @@
    <div class="ibox-title">
       <h5 style="margin-top:10px">Đơn nhập hàng </h5>
       @if(Auth::user()->role_id == 1)
-      <a href="{{asset('/addxuat')}}" style="margin-left: 10px;"class="btn btn-success">Xuất kho</a>
+      <a href="{{asset('/addxuat')}}" style="margin-left: 10px;"class="btn btn-success">Tạo mới xuất kho</a>
       @endif
       <a href="{{asset('/listSpxuatKho')}}" style="margin-left: 10px;"class="btn btn-primary">Danh sách sản phẩm xuất kho</a>
    </div>
@@ -142,19 +142,7 @@
                           @endforeach
 
                         </tbody>
-                        <tfoot>
-                           <tr>
-                              <th>STT</th>
-                              <th>Mã xuất kho</th>
-                              <th>Khách hàng</th>
-                              <th>Nội dung</th>
-                              <th>Người nhập</th>
-                              <th>Số lượng sản phẩm xuất</th>
-                              <th>Tổng Tiền</th>
-                              <th>Ngày tạo</th>
-                              <th>Tùy chọn</th>
-                           </tr>
-                        </tfoot>
+                        
                      </table>
                   </div>
                </div>

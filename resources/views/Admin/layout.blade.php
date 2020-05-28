@@ -68,21 +68,23 @@
                         <a href="{{asset('/listCategory')}}"><i class="fa fa-bars"></i> <span class="nav-label">Danh sách Loại Hàng</span></a>
                     </li>
 
+                    <li class="<?php echo isset($open) && $open == 'listsupplier' ?'active':'' ?>">
+                        <a href="{{asset('/listsupplier')}}"><i class="fa fa-building-o"></i> <span class="nav-label">Danh sách Nhà Sản Xuất</span></a>
+                    </li>
+
                     <li class="<?php echo isset($open1) && $open1 == 'Product' ?'active':'' ?>">
                         <a><i class="fa fa-archive"></i> <span class="nav-label">Sản Phẩm</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" style="height: 0px;">
                             <li class="<?php echo isset($open) && $open == 'dsProduct' ?'active':'' ?>"><a href="{{asset('/listProduct')}}">Danh sách tất cả sản phẩm <span class="label label-primary pull-right">NEW</span></a></li>
                             <li class="<?php echo isset($open) && $open == 'saphethan' ?'active':'' ?>"><a href="{{asset('/saphethan')}}">Sản phẩm sắp hết hạn </a></li>
                             <li class="<?php echo isset($open) && $open == 'hethan' ?'active':'' ?>"><a href="{{asset('/hethan')}}">Sản phẩm hết hạn </a></li>
-                            <li class="<?php echo isset($open) && $open == 'conhsd' ?'active':'' ?>"><a href="{{asset('/conhsd')}}">Sản phẩm còn hạn <span class="label label-primary pull-right">NEW</span></a></li>
+                            <li class="<?php echo isset($open) && $open == 'conhsd' ?'active':'' ?>"><a href="{{asset('/conhsd')}}">Sản phẩm còn hạn </a></li>
                             <li class="<?php echo isset($open) && $open == 'ngungkinhdoanh' ?'active':'' ?>"><a href="{{asset('/ngungkinhdoanh')}}">Sản phẩm ngừng kinh doanh </a></li>
-                            <li class="<?php echo isset($open) && $open == 'conkinhdoanh' ?'active':'' ?>"><a href="{{asset('/conkinhdoanh')}}">Sản phẩm đang kinh doanh <span class="label label-primary pull-right">NEW</span></a></li>
+                            <li class="<?php echo isset($open) && $open == 'conkinhdoanh' ?'active':'' ?>"><a href="{{asset('/conkinhdoanh')}}">Sản phẩm đang kinh doanh </a></li>
                         </ul>
                     </li>
                     
-                    <li class="<?php echo isset($open) && $open == 'listsupplier' ?'active':'' ?>">
-                        <a href="{{asset('/listsupplier')}}"><i class="fa fa-building-o"></i> <span class="nav-label">Danh sách Nhà Sản Xuất</span></a>
-                    </li>
+                   
                     <li class="<?php echo isset($open) && $open == 'listnhacungcap' ?'active':'' ?>">
                         <a href="{{asset('/listnhacungcap')}}"><i class="fa fa-building-o"></i> <span class="nav-label">Danh sách Nhà Cung Cấp</span></a>
                     </li>
@@ -103,8 +105,8 @@
                     <li class="<?php echo isset($open1) && $open1 == 'thongkesp' ?'active':'' ?>">
                         <a><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Thống kê</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level " style="height: 0px;">
-                            <li class="<?php echo isset($open) && $open == 'kiemhang' ?'active':'' ?>"><a href="{{asset('/thongkesp')}}">Kiểm hàng <span class="label label-primary pull-right">NEW</span></a></li>
-                            <li class="<?php echo isset($open) && $open == 'kiemhang' ?'active':'' ?>"><a href="{{asset('/kiemke/thongketonkho')}}">Tồn kho <span class="label label-primary pull-right">NEW</span></a></li>
+                            <li class="<?php echo isset($open) && $open == 'kiemhang' ?'active':'' ?>"><a href="{{asset('/thongkesp')}}">Kiểm hàng <span class="label label-primary pull-right"></span></a></li>
+                            <li class="<?php echo isset($open) && $open == 'kiemhang' ?'active':'' ?>"><a href="{{asset('/kiemke/thongketonkho')}}">Tồn kho <span class="label label-primary pull-right"></span></a></li>
 
                         </ul>
                     </li>
@@ -118,13 +120,18 @@
                     </li>
 
                     <li class="<?php echo isset($open) && $open == 'users' ?'active':'' ?>">
-                        <a href="{{asset('/listusers')}}"><i class="fa fa-users"></i> <span class="nav-label">Người dùng</span></a>
+                        <a><i class="fa fa-users"></i> <span class="nav-label">Người dùng</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level " style="height: 0px;">
+                            <li class="<?php echo isset($open1) && $open1 == 'ListND' ?'active':'' ?>"><a  href="{{asset('/listusers')}}"><i class="fa fa-bars"></i> Danh sách người dùng <span class="label label-primary pull-right"></span></a></li>
+                            <li class="<?php echo isset($open1) && $open1 == 'editUser' ?'active':'' ?>">
+                                <a href="{{ asset('/user/update/'. Auth::user()->id )}}"><i class="fa fa-edit"></i> 
+                                    <span class="nav-label">Sửa thông tin</span></a>
+                            </li>
+
+                        </ul>
                     </li>
 
-                    <li class="<?php echo isset($open) && $open == 'editUser' ?'active':'' ?>">
-                        <a href="{{ asset('/user/update/'. Auth::user()->id )}}"><i class="fa fa-edit"></i> 
-                            <span class="nav-label">Sửa thông tin</span></a>
-                    </li>
+                    
 
 
                 {{-- @endif --}}

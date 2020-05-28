@@ -2,8 +2,8 @@
 @extends('Admin.layout')
 @section('content')
 <div class="ibox-title">
-   <h5><a href="{{asset('admin/user')}}"> <i> <small> Nhập kho </small> </i> </a></h5>
-   <h5>&nbsp;/&nbsp; Xuất kho</h5>
+   <h5><a href="{{asset('admin/user')}}"> <i> <small> Xuất kho </small> </i> </a></h5>
+   <h5>&nbsp;/&nbsp; Thêm mới xuất kho</h5>
    {!! $open == 'nhapkho' ? '
    <h5>Thêm nhập kho</h5>
    ':''!!}

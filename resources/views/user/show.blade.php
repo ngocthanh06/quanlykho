@@ -1,4 +1,4 @@
-<?php $open = 'users' ?>
+<?php $open = 'users'; $open1 ='ListND' ?>
 @extends('Admin.layout')
 @section('content')
     <div class="ibox float-e-margins">

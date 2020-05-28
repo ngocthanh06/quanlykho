@@ -20,12 +20,8 @@
 
     <div class="middle-box text-center loginscreen animated fadeInDown">
         <div>
-            <div>
-
-                <h1 style="margin-left: -110px" class="logo-name">QLKho</h1>
-
-            </div>
-            <h3>Chào mừng đến trang đăng nhập</h3>
+            
+            <h3>Chào mừng đến trang Quản Lý Kho</h3>
             <p>Đăng nhập để được truy cập vào tài khoản.
                 <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
             </p>
@@ -42,8 +38,7 @@
                 <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
                 <a href="#"><small>Quên mật khẩu?</small></a>
-                <p class="text-muted text-center"><small>Bạn không có tài khoản?</small></p>
-                <a class="btn btn-sm btn-white btn-block" href="register.html">Tạo tài khoản</a>
+                
             </form>
             <p class="m-t"> <small>&copy; 2020</small> </p>
         </div>

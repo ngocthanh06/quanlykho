@@ -135,19 +135,7 @@
                            </div>
                            @endforeach
                         </tbody>
-                        <tfoot>
-                           <tr>
-                              <th>STT</th>
-                              <th>Mã đơn hàng</th>
-                              <th>Nội dung</th>
-                              <th>Người nhập</th>
-                              <th>Nhà cung cấp</th>
-                              <th>Số lượng sản phẩm nhập</th>
-                              <th>Tổng Tiền</th>
-                              <th>Ngày tạo</th>
-                              <th>Tùy chọn</th>
-                           </tr>
-                        </tfoot>
+                        
                      </table>
                   </div>
                </div>

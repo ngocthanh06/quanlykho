@@ -58,6 +58,7 @@ class Usercontroller extends Controller
      */
     public function show($id)
     {    
+        $user['role'] = role::all();
         if(Auth::user()->role_id == 1){
          $user['user'] = User::find($id);
         }
@@ -88,9 +89,11 @@ class Usercontroller extends Controller
     {
          $user = User::find($id);
          $user['name'] = $request->name;
+         $user['role_id'] = $request->role_id;
          $user['email'] = $request->email;
          if(!Hash::check($user['password'],Hash::make($request->password)))
          $user['password'] =  hash::make($request->password);
+         
          $user->save();
          return redirect()->intended('/listusers')->with('success', 'Sửa thành công');
     }

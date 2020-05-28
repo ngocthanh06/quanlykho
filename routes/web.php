@@ -127,7 +127,7 @@ Route::get('delClient/{id}', 'ClientController@destroy')->middleware('checkRole'
  * Todo user
  */
 Route::get('user/update/{id}', 'Usercontroller@show');
-Route::post('user/update/{id}', 'Usercontroller@update')->middleware('checkRole');
+Route::post('user/update/{id}', 'Usercontroller@update');
 Route::get('/listusers', 'Usercontroller@index');
 Route::get('/adduser', 'Usercontroller@create')->middleware('checkRole');
 Route::post('/adduser', 'Usercontroller@store')->middleware('checkRole');    

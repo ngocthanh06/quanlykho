@@ -1,4 +1,4 @@
-<?php $open = 'client' ?>
+<?php $open = 'users'; $open = 'editUser' ?>
 @extends('Admin.layout')
 @section('content')
     <div class="ibox-title">
